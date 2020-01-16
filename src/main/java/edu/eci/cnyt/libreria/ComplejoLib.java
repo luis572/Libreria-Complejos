@@ -41,8 +41,13 @@ public class ComplejoLib {
         return  Math.sqrt(a.getReal()*a.getReal()+a.getImaginrio()*a.getImaginrio());
     }
     public static Complejo CartecianasApolares(Complejo a){
-        //Double angulo= a.getImaginrio()
-        return  null ;
+        Double angulo=Math.atan(a.getReal()/a.getImaginrio());
+        Double p=Math.sqrt(a.getReal()*a.getReal()+a.getImaginrio()*a.getImaginrio());
+        return  new Complejo(p, angulo) ;
+    }
+    public static Double fase(Complejo a){
+        Double angulo=Math.atan(a.getReal()/a.getImaginrio());
+        return  angulo;
     }
     //public static void main(String agr){
         
