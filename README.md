@@ -137,4 +137,4 @@ se debe de clonar el proyecto, para esto utilizaremos el comando git clone. ubí
 }
 ```
 ## Ejecutando Pruebas: 
-![alt text](https://github.com/luis572/Libreria-Complejos.git/test.PNG " Resultado")
+![alt text](https://github.com/luis572/Libreria-Complejos.git/test.JPG " Resultado")
