@@ -24,4 +24,8 @@ public class Complejo {
     public Double getImaginrio() {
         return imaginrio;
     }
+    public String toString(){
+        String r=real.toString()+" "+imaginrio.toString();
+        return r;
+    }
 }
