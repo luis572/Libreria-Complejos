@@ -38,8 +38,6 @@ public class ComplejoLibTest {
         
         Complejo Cua1=ComplejoLib.multiplicacion(new Complejo(6.0,6.2), new Complejo(6.0,6.2));
         Complejo Cua2=ComplejoLib.multiplicacion(new Complejo(6.0,-7.4), new Complejo(6.0,-7.4));
-        System.out.println(Cua1.toString());
-        System.out.println(Cua2.toString());
         
     }
 
@@ -127,8 +125,6 @@ public class ComplejoLibTest {
         Vector w=new Vector(b);
         Vector r=ComplejoLib.inversaVector(w);
         String respuesta=" -6.0 4.0 -7.0 -3.0 -4.2 8.1 -0.0 3.0";
-        System.out.println(respuesta);
-        System.out.println(r.toString());
         assertTrue(r.toString().equals(respuesta));
     }
     @Test
