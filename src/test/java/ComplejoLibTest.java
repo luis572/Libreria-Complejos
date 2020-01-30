@@ -32,9 +32,15 @@ public class ComplejoLibTest {
         Complejo a = new Complejo(3.0, -1.0);
         Complejo b = new Complejo(1.0, 4.0);
         Complejo resp = ComplejoLib.suma(a, b);
-        System.out.println(resp.getReal());
-        System.out.println(resp.getImaginrio());
+        //System.out.println(resp.getReal());
+        //System.out.println(resp.getImaginrio());
         assertTrue(resp.getReal() == 4.0 && resp.getImaginrio() == 3.0);
+        
+        Complejo Cua1=ComplejoLib.multiplicacion(new Complejo(6.0,6.2), new Complejo(6.0,6.2));
+        Complejo Cua2=ComplejoLib.multiplicacion(new Complejo(6.0,-7.4), new Complejo(6.0,-7.4));
+        System.out.println(Cua1.toString());
+        System.out.println(Cua2.toString());
+        
     }
 
     @Test
