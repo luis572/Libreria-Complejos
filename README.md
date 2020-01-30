@@ -245,3 +245,11 @@ se debe de clonar el proyecto, para esto utilizaremos el comando git clone. ubí
 ```
 ## Ejecutando Pruebas: 
 ![alt text](https://github.com/luis572/Libreria-Complejos/blob/master/test.JPG " Resultado")
+
+## Authors
+
+* **Luis Pizza** - *Develop* -(https://github.com/luis572)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/heredikon/SHOP-FILES-FRONT/blob/master/LICENSE) file for details
