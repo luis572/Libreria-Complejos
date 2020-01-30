@@ -82,7 +82,7 @@ public class ComplejoLib {
 	 * @return Complejo
 	 */
     public static Complejo CartecianasApolares(Complejo a){
-        Double angulo=Math.atan(a.getReal()/a.getImaginrio());
+        Double angulo=Math.atan2(a.getReal(),a.getImaginrio());
         Double p=Math.sqrt(a.getReal()*a.getReal()+a.getImaginrio()*a.getImaginrio());
         return  new Complejo(p, angulo) ;
     }
@@ -92,7 +92,8 @@ public class ComplejoLib {
 	 * @return Double
 	 */
     public static Double fase(Complejo a){
-        Double angulo=Math.atan(a.getReal()/a.getImaginrio());
+        
+        Double angulo=Math.atan2(a.getReal(),a.getImaginrio());
         return  angulo;
     }
     /**
