@@ -133,6 +133,11 @@ public class ComplejoLibTest {
         Double rta = ComplejoLib.fase(a);
         assertTrue(rta==0.7853981633974483 );
     }
+    @Test
+    public void simulacinHH_HX() {
+        Complejo[][] H={{new Complejo(0.707,0.0),new Complejo(0.707,0.0)},{new Complejo(0.707,0.0),new Complejo(-0.707,0.0)}};
+        Complejo[][] X={{new Complejo(0.0,0.0),new Complejo(1.0,0.0)},{new Complejo(0.0,0.0),new Complejo(1.0,0.0)}};
+    }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
