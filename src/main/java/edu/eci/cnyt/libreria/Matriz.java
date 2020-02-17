@@ -14,6 +14,10 @@ import java.util.ArrayList;
 public class Matriz {
 
     private Complejo[][] matriz;
+
+    public Complejo[][] getMatriz() {
+        return matriz;
+    }
     private int length;
 
     public Matriz(int m, int n) {

@@ -175,8 +175,13 @@ public class ComplejoLib {
         Vector v = new Vector(vectorResultado);
         return v;
     }
-
-    public static Matriz sumaM(Complejo[][] m1, Complejo[][] m2) {
+    /**
+     * Este metodo permite calcular la suma entre matrices.
+     * @param m1 //tipo Complejo[][]
+     * @param m2 //tipo Complejo[][]
+     * @return Matriz 
+     */    
+    public static Matriz sumaDeMatrizes(Complejo[][] m1, Complejo[][] m2) {
         Complejo r[][] = new Complejo[m1.length][m1[0].length];
         for (int i = 0; i < m1.length; i++) {
             for (int j = 0; j < m1[0].length; j++) {
@@ -185,8 +190,13 @@ public class ComplejoLib {
         }
         return new Matriz(r);
     }
-
-    public static Matriz restaM(Complejo[][] m1, Complejo[][] m2) {
+    /**
+     * Este metodo permite calcular la resta entre matrices.
+     * @param m1 //tipo Complejo[][]
+     * @param m2 //tipo Complejo[][]
+     * @return Matriz 
+     */    
+    public static Matriz restaDeMatrizes(Complejo[][] m1, Complejo[][] m2) {
         Complejo r[][] = new Complejo[m1.length][m1[0].length];
         for (int i = 0; i < m1.length; i++) {
             for (int j = 0; j < m1[0].length; j++) {
@@ -196,7 +206,26 @@ public class ComplejoLib {
         }
         return new Matriz(r);
     }
-
+    /**
+     * Este metodo permite calcular la resta entre matrices.
+     * @param m1 //tipo Complejo[][]
+     * @return Matriz 
+     */
+    public static Matriz inversaMatriz(Complejo[][] m1) {
+        Complejo r[][] = new Complejo[m1.length][m1[0].length];
+        for (int i = 0; i < m1.length; i++) {
+            for (int j = 0; j < m1[0].length; j++) {
+                r[i][j] = InversaComplejo(m1[i][j]);
+            }
+        }
+        return new Matriz(r);
+    }
+    /**
+     * Este metodo permite calcular la multiplicacion entre una matriz y un escalar.
+     * @param c1 //tipo Complejo
+     * @param m1 //tipo Complejo[][]
+     * @return Matriz 
+     */
     public static Matriz productoScalar(Complejo c1, Complejo[][] m1) {
         Complejo r[][] = new Complejo[m1.length][m1[0].length];
         for (int i = 0; i < m1.length; i++) {
@@ -206,7 +235,78 @@ public class ComplejoLib {
         }
         return new Matriz(r);
     }
-
+    /**
+     * Este metodo permite calcular transpuesta de una matriz.
+     * @param m1 //tipo Complejo[][]
+     * @return Matriz 
+     */
+    public static Matriz transpuestaMatriz(Complejo[][] m1) {
+        Complejo r[][] = new Complejo[m1.length][m1[0].length];
+        for (int i = 0; i < m1.length; i++) {
+            for (int j = 0; j < m1[0].length; j++) {
+                r[i][j] = m1[j][i];
+            }
+        }
+        return new Matriz(r);
+    }
+    /**
+     * Este metodo permite calcular transpuesta de una matriz.
+     * @param v //tipo Vector
+     * @return Vector
+     */
+    public static Vector transpuestaVector(Vector v) {
+        return v;
+    }
+    /**
+     * Este metodo permite calcular el conjugado de  vector.
+     * @param v //  Vector
+     * @return vector
+     */
+    public static Vector conjugadoVector(Vector v) {
+        ArrayList<Complejo> vectorResultado = new ArrayList<Complejo>();
+        for(int i=0;i<v.getVec().size();i++){
+            vectorResultado.add(Conjugado(v.getVec().get(i)));
+        }
+        return new Vector(vectorResultado); 
+        
+    }
+    /**
+     * Este metodo permite calcular el conjugado de una matriz.
+     * @param m1 //Complejo[][]
+     * @return Matriz
+     */
+    public static Matriz conjugadoMatriz(Complejo[][] m1) {
+        Complejo r[][] = new Complejo[m1.length][m1[0].length];
+        for (int i = 0; i < m1.length; i++) {
+            for (int j = 0; j < m1[0].length; j++) {
+                r[i][j] = Conjugado(m1[j][i]);
+            }
+        }
+        return new Matriz(r);
+    }
+    /**
+     * Este metodo permite calcular la adjunta  de una matriz.
+     * @param m1 //Complejo[][]
+     * @return Matriz
+     */
+    public static Matriz adjuntaMatriz(Complejo[][] m1) {
+        Complejo r[][] = conjugadoMatriz(transpuestaMatriz(m1).getMatriz()).getMatriz();
+        return new Matriz(r);
+    }
+    /**
+     * Este metodo permite calcular la adjunta de un vector.
+     * @param v //Vector
+     * @return Vector
+     */
+    public static Vector adjuntaVector(Vector v) {
+        return conjugadoVector(transpuestaVector(v));
+    }
+    /**
+     * Este metodo permite calcular la multiplicacion entre dos matrizes.
+     * @param m1 //Complejo[][]
+     * @param m2 //Complejo[][]
+     * @return Matriz
+     */
     public static Matriz productoMatrices(Complejo[][] m1, Complejo[][] m2) {
         Complejo sum;
         Complejo r[][] = new Complejo[m1.length][m1[0].length];
@@ -221,8 +321,13 @@ public class ComplejoLib {
         }
         return new Matriz(r);
     }
-
-    public static Complejo[] productoMatrisVector(Complejo[][] m1, Complejo[] v) {
+    /**
+     * Este metodo permite calcular la accion entre una matriz y un vector.
+     * @param m1 //Complejo[][]
+     * @param v //Complejo[]
+     * @return Vector
+     */
+    public static Vector accionMatrisVector(Complejo[][] m1, Complejo[] v) {
         Complejo sum;
         Complejo r[] = new Complejo[v.length];
         for (int i = 0; i < m1.length; i++) {
@@ -233,12 +338,20 @@ public class ComplejoLib {
 
             r[i] = sum;
         }
-        int cont = 1;
-        return r;
+         ArrayList<Complejo> vectorResultado = new ArrayList<Complejo>();
+        for(int i=0;i<r.length;i++){
+            vectorResultado.add(r[i]);
+        }
+        return new Vector(vectorResultado);
 
     }
-
-    public static Complejo productoInterno(Complejo[][] m1, Complejo[][] m2) {
+    /**
+     * Este metodo permite calcular el producto interno entre dos matrizes.
+     * @param m1 //Complejo[][]
+     * @param m2 //Complejo[][]
+     * @return Complejo
+     */
+    public static Complejo productoInternoMatrizes(Complejo[][] m1, Complejo[][] m2) {
         Complejo sum = new Complejo(0.0, 0.0);
         for (int i = 0; i < m1.length; i++) {
             for (int j = 0; j < m1[0].length; j++) {
@@ -247,8 +360,57 @@ public class ComplejoLib {
         }
         return sum;
     }
-
-    public static Matriz productoTensor(Complejo[][] m1, Complejo[][] m2) {
+    /**
+     * Este metodo permite calcular el producto interno entre dos matrizes.
+     * @param v1 //Vector
+     * @param v2 //Vector
+     * @return Complejo
+     */
+    public static Complejo productoInternoVectores(Vector v1, Vector v2) {
+        Complejo sum = new Complejo(0.0, 0.0);
+        for (int i = 0; i < v1.getVec().size(); i++) {
+            sum = suma(sum, multiplicacion(v1.getVec().get(i), v2.getVec().get(i)));
+        }
+        return sum;
+    }
+    /**
+     * Este metodo permite calcular la distancia entre dos vectores.
+     * @param v1 //Vector
+     * @param v2 //Vector
+     * @return Double
+     */
+     public static Double distanciaVectores(Vector v1, Vector v2) {
+        Double sum = 0.0;
+        for (int i = 0; i < v1.getVec().size(); i++) {
+            sum = sum+Math.pow(Modulo(resta(v1.getVec().get(i), v2.getVec().get(i))),2);
+        }
+        return sum;
+    }
+     
+     /**
+     * Este metodo permite calcular si una matriz es Hermitiana.
+     * @param m1 //Complejo[][]
+     * @return Boolean
+     */
+     public static Boolean hermitiana(Complejo[][] m1) {
+         Complejo[][] m2=adjuntaMatriz(m1).getMatriz();
+        return m1.equals(m2);
+    }
+     /**
+     * Este metodo permite calcular si una matriz es Unitaria.
+     * @param m1 //Complejo[][]
+     * @return Boolean
+     */
+     public static Boolean unitaria(Complejo[][] m1) {
+        return productoMatrices(m1,adjuntaMatriz(m1).getMatriz()).equals(productoMatrices(adjuntaMatriz(m1).getMatriz(),m1));
+    }
+     /**
+     * Este metodo permite calcular el producto tensor entre dos matrices.
+     * @param m1 //Complejo[][]
+     * @param m2 //Complejo[][]
+     * @return Matriz
+     */
+    public static Matriz productoTensorMatrizes(Complejo[][] m1, Complejo[][] m2) {
         Complejo[][] r = new Complejo[m1.length * m2.length][m1[0].length * m2[0].length];
         for (int i = 0; i < m1.length; i++) {
             for (int j = 0; j < m1[0].length; j++) {
@@ -263,7 +425,24 @@ public class ComplejoLib {
         }
         return new Matriz(r);
     }
-
+    /**
+     * Este metodo permite calcular el producto tensor entre dos matrices.
+     * @param b //Vector
+     * @param a //Vector
+     * @return Matriz
+     */
+    public static Vector productoTenseroVectores(Vector a, Vector b) {
+        int r = a.getVec().size();
+        ArrayList<Complejo> vectorResultado = new ArrayList<Complejo>();
+        for (int i = 0; i < r; i++) {
+             for (int j = 0; j< b.getVec().size() ; j++) {
+                  vectorResultado.add(multiplicacion(a.getVec().get(i),b.getVec().get(j)));
+             }
+           
+        }
+        Vector v = new Vector(vectorResultado);
+        return v;
+    }
     public static double redondearDecimales(double valorInicial, int numeroDecimales) {
         double parteEntera, resultado;
         resultado = valorInicial;
