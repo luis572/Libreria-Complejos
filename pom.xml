@@ -24,6 +24,11 @@
             <artifactId>maven-dependency-plugin</artifactId>
             <version>3.1.1</version>
         </dependency>
+        <dependency>
+            <groupId>jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.0.13</version>
+        </dependency>
 
     </dependencies>
     <properties>
