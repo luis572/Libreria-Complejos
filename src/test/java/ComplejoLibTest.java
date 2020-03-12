@@ -188,7 +188,7 @@ public class ComplejoLibTest {
         }
         assertArrayEquals(r, resp2);
         System.out.println(" ");
-        ComplejoLib.graficarEstado(r,"canicas_con_coeficiente_booleanos_quiz");
+        ComplejoLib.graficarEstado(r, "canicas_con_coeficiente_booleanos_quiz");
     }
 
     @Test
@@ -210,7 +210,7 @@ public class ComplejoLibTest {
         for (Double e : r) {
             System.out.println(e);
         }
-        ComplejoLib.graficarEstado(r,"Multiples_Rendijas_Experiemnto");
+        ComplejoLib.graficarEstado(r, "Multiples_Rendijas_Experiemnto");
     }
 
     @Test
@@ -221,30 +221,84 @@ public class ComplejoLibTest {
         HashMap<String, Complejo> probabilidades = new HashMap<>();
         probabilidades.put("0-1", new Complejo(1 / Math.sqrt(2), 0.0));
         probabilidades.put("0-2", new Complejo(1 / Math.sqrt(2), 0.0));
-        probabilidades.put("1-3", new Complejo(-1 / Math.sqrt(6),1 / Math.sqrt(6)));
-        probabilidades.put("1-4", new Complejo(-1 / Math.sqrt(6),-1 / Math.sqrt(6)));
-        probabilidades.put("1-5", new Complejo(1 / Math.sqrt(6),-1 / Math.sqrt(6)));
-        probabilidades.put("2-5", new Complejo(-1 / Math.sqrt(6),1 / Math.sqrt(6)));
-        probabilidades.put("2-6", new Complejo(-1 / Math.sqrt(6),-1 / Math.sqrt(6)));
-        probabilidades.put("2-7", new Complejo(1 / Math.sqrt(6),-1 / Math.sqrt(6)));
+        probabilidades.put("1-3", new Complejo(-1 / Math.sqrt(6), 1 / Math.sqrt(6)));
+        probabilidades.put("1-4", new Complejo(-1 / Math.sqrt(6), -1 / Math.sqrt(6)));
+        probabilidades.put("1-5", new Complejo(1 / Math.sqrt(6), -1 / Math.sqrt(6)));
+        probabilidades.put("2-5", new Complejo(-1 / Math.sqrt(6), 1 / Math.sqrt(6)));
+        probabilidades.put("2-6", new Complejo(-1 / Math.sqrt(6), -1 / Math.sqrt(6)));
+        probabilidades.put("2-7", new Complejo(1 / Math.sqrt(6), -1 / Math.sqrt(6)));
         Double[][] m = ComplejoLib.getMatrizXmatrizCuantico(2, 5, probabilidades);
         Double[] v2 = {1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-        Double[] r=ComplejoLib.Experimentosdelasmúltiplesrendijasclásico(m,v2,1);
-        for(Double[] e: m){
-         System.out.println(Arrays.toString(e));
-         }
-        for(Double e: r){
-         System.out.println(e);
-         }
-        ComplejoLib.graficarEstado(r,"Multiples_Rendijas_Experiemnto_Cuantico");
+        Double[] r = ComplejoLib.Experimentosdelasmúltiplesrendijasclásico(m, v2, 1);
+        for (Double[] e : m) {
+            System.out.println(Arrays.toString(e));
+        }
+        for (Double e : r) {
+            System.out.println(e);
+        }
+        ComplejoLib.graficarEstado(r, "Multiples_Rendijas_Experiemnto_Cuantico");
     }
+
     @Test
-    public void graficar() {
-        
+    public void Sistema_cuántico_de_partícula_en_una_línea() {
+        System.out.println("-----------------Sistema_cuántico_de_partícula_en_una_línea-----------------------");
+        Complejo[] linea = {
+            new Complejo(2.0, 1.0),
+            new Complejo(-1.0, 2.0),
+            new Complejo(0.0, 1.0),
+            new Complejo(1.0, 0.0),
+            new Complejo(3.0, -1.0),
+            new Complejo(2.0, 0.0),
+            new Complejo(0.0, -2.0),
+            new Complejo(-2.0, 1.0),
+            new Complejo(1.0, -3.0),
+            new Complejo(0.0, -1.0)
+        };
+
+        for (int i = 0; i < linea.length; i++) {
+            System.out.println(ComplejoLib.SistemaCuanticoPartUnalínea(linea, i));
+        }
+        System.out.println("----------------------------------------");
+
+    }
+
+    @Test
+    public void probTransitarVectorAtro() {
+        System.out.println("-----------------Sistema_cuántico_de_transicionnnn_en_una_línea-----------------------");
+        ArrayList<Complejo> linea = new ArrayList<>();
+        linea.add(new Complejo(2.0, 1.0));
+        linea.add(new Complejo(-1.0, 2.0));
+        linea.add(new Complejo(0.0, 1.0));
+        linea.add(new Complejo(1.0, 0.0));
+        linea.add(new Complejo(3.0, -1.0));
+        linea.add(new Complejo(2.0, 0.0));
+        linea.add(new Complejo(0.0, -2.0));
+        linea.add(new Complejo(-2.0, 1.0));
+        linea.add(new Complejo(1.0, -3.0));
+        linea.add(new Complejo(0.0, -1.0));
+
+        ArrayList<Complejo> linea2 = new ArrayList<>();
+        linea2.add(new Complejo(-1.0, -4.0));
+        linea2.add(new Complejo(2.0, -3.0));
+        linea2.add(new Complejo(-7.0, 6.0));
+        linea2.add(new Complejo(-1.0, 1.0));
+        linea2.add(new Complejo(-5.0, -3.0));
+        linea2.add(new Complejo(5.0, 0.0));
+        linea2.add(new Complejo(5.0, 8.0));
+        linea2.add(new Complejo(4.0, -4.0));
+        linea2.add(new Complejo(8.0, -7.0));
+        linea2.add(new Complejo(2.0, -7.0));
+        System.out.println(ComplejoLib.AmpliTransitarVectorAtro(new Vector(linea),new Vector(linea2)));
+    }
+    
+
+       
+       
+
     }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
     // @Test
     // public void hello() {}
-}
+

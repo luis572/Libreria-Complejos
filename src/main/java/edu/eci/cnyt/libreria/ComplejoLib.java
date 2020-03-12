@@ -620,7 +620,39 @@ public class ComplejoLib {
         }
         return r;
     }
-
+	public static Double SistemaCuanticoPartUnalínea(Complejo[] linea,int posicion) {
+            Double suma=0.0;
+            for(Complejo e: linea){
+                suma=suma+Mod(e);
+            }
+            Double estand=Math.sqrt(suma);
+            Double prob=Mod(linea[posicion])/(estand*estand);
+            return prob;
+        }
+    public static Vector normalizar(Vector a){
+        
+        ArrayList<Complejo>b=a.getVec();    
+        Double magnitud=0.0;
+        for(int i=0;i<b.size();i++){
+            magnitud+=Math.pow(Modulo(b.get(i)),2);
+        }
+        magnitud=Math.sqrt(magnitud);
+        
+        for(int i=0;i<b.size();i++){
+            Complejo d=new Complejo(b.get(i).getReal()/magnitud,b.get(i).getImaginrio()/magnitud); 
+            b.set(i, d);
+        }
+        return new Vector(b);   
+    }
+    public static Complejo AmpliTransitarVectorAtro(Vector a,Vector b){
+        Vector vn2=normalizar(adjuntaVector(a));
+        Vector vn1=normalizar(b);
+        ArrayList<Complejo>v1=vn1.getVec();
+        ArrayList<Complejo>v2=vn2.getVec();
+        
+        return productoInternoVectores(new Vector(v1),new Vector(v2));
+    }
+    
     public static double redondearDecimales(double valorInicial, int numeroDecimales) {
         double parteEntera, resultado;
         resultado = valorInicial;
