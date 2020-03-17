@@ -16,7 +16,32 @@ se debe de clonar el proyecto, para esto utilizaremos el comando git clone. ubí
 ## Instalacion 
 - Ejecutar el comando mvn package
 - Ejecutando pruebas: mvn test 
+### Utilidades: Basado en el libro Quantum Computing for Computing Scientists se cuenta con las siguientes funciones.
 
+    Capítulos 1 y 2:
+    - Suma de complejos y matrices
+    - Resta de complejos y matrices 
+    - Conjugado de un complejo y una matriz
+    - Inverso de un complejo y una matriz 
+    - Producto entre complejos, complejo - matriz y entre matrices
+    - Division entre complejos y matrices
+    - Modulo de un complejo y matriz
+    - Fase de un complejo
+    - Adjunta de una matriz
+    - Traspuesta de una matriz
+    - Producto Interno
+    - Producto Tensor
+    
+    Capítulo 3:
+    - Experimento de las canicas con una Matriz Binaria
+    - Experimento de las canicas con Pesos
+    - Experimento de las canicas con coeficientes complejos
+    - Experimento de la doble rendija
+    
+    Capítulo 4:
+    - El sistema calcula la probabilidad de encontrarlo en una posición en particular.
+    - El sistema si se le da otro vector Ket busca la probabilidad de transitar del primer vector al segundo.
+    
 ## Libreria
 ```java 
  public class ComplejoLib {
