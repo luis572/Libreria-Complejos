@@ -87,8 +87,6 @@ se debe de clonar el proyecto, para esto utilizaremos el comando git clone. ubí
         ComplejoLib.graficarEstado(r, "canicas_con_coeficiente_booleanos_quiz");
     }
 ```
--resultados: 
-
 #### Experimentos de las múltiples rendijas clásico probabilístico, con dos o más  rendijas: 
 -codigo: 
 ```java 
@@ -139,7 +137,6 @@ public static Double[][] getMatrizXmatriz(int rendijas, int objetivos, HashMap<S
     }
 
 
-
 @Test
     public void MultiplesRendijasExperiemnto() {
         System.out.println("---------Multiples Rendijas Experiemnto Clasico ---------");
@@ -162,8 +159,6 @@ public static Double[][] getMatrizXmatriz(int rendijas, int objetivos, HashMap<S
         ComplejoLib.graficarEstado(r, "Multiples_Rendijas_Experiemnto");
     }
 ```
--resultados:  
-
 #### Experimentos de las múltiples rendijas clásico probabilístico, con dos o más  rendijas: 
 ```java 
 /**
@@ -228,8 +223,6 @@ public static Double[][] getMatrizXmatrizCuantico(int rendijas, int objetivos, H
         ComplejoLib.graficarEstado(r, "Multiples_Rendijas_Experiemnto_Cuantico");
     }
 ```
--resultados:  
-
 #### Función para graficar:
 ```java 
 /**
@@ -257,7 +250,8 @@ public static void graficarEstado(Double[] EstadoVector,String name) {
     }
 ```
 ## Ejecutando Pruebas: 
-![alt text](https://github.com/luis572/Libreria-Complejos/blob/master/test.JPG " Resultado")
+![alt text](https://github.com/luis572/Libreria-Complejos/blob/master/test1.JPG " Resultado")
+![alt text](https://github.com/luis572/Libreria-Complejos/blob/master/test2.JPG " Resultado")
 
 ## Authors
 
