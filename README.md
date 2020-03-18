@@ -253,9 +253,12 @@ public static void graficarEstado(Double[] EstadoVector,String name) {
 ![alt text](https://github.com/luis572/Libreria-Complejos/blob/master/test1.JPG " Resultado")
 ![alt text](https://github.com/luis572/Libreria-Complejos/blob/master/test2.JPG " Resultado")
 
+#### Graficando Multiples Rendijas Experiemnto clasico
+
+![alt text](https://github.com/luis572/Libreria-Complejos/blob/master/Multiples_Rendijas_Experiemnto.png " Resultado")
+
 #### Graficando Multiples Rendijas Experiemnto Cuantico
-#### Graficando Multiples Rendijas Experiemnto Cuantico
-#### Graficando Multiples Rendijas Experiemnto Cuantico
+
 ![alt text](https://github.com/luis572/Libreria-Complejos/blob/master/Multiples_Rendijas_Experiemnto_Cuantico.png " Resultado")
 
 
