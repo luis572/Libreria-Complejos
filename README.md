@@ -34,240 +34,198 @@ se debe de clonar el proyecto, para esto utilizaremos el comando git clone. ubí
     
     Capítulo 3:
     - Experimento de las canicas con una Matriz Binaria
-    - Experimento de las canicas con Pesos
-    - Experimento de las canicas con coeficientes complejos
-    - Experimento de la doble rendija
+    - Experimentos de las múltiples rendijas clásico probabilístico, con más de dos rendijas.
+    - Experimentos de las múltiples rendijas cuántico.
+    - Función para graficar 
     
     Capítulo 4:
     - El sistema calcula la probabilidad de encontrarlo en una posición en particular.
     - El sistema si se le da otro vector Ket busca la probabilidad de transitar del primer vector al segundo.
     
-## Libreria
+## Experimentos capitulo 3 Implementacion
+
+#### Experimento de las canicas con una Matriz Binaria
+-codigo: 
 ```java 
- public class ComplejoLib {
-    public ComplejoLib(){
-    
-    }
-     /**
-	 * Este metodo permite calcular la suma de dos numeros complejos 
-         * @param a //tipo Complejo
-         * @param b //tipo Complejo
-	 * @return Complejo
-	 */
-    public static Complejo suma(Complejo a,Complejo b){
-        Double x=a.getReal()+b.getReal();
-        Double y=a.getImaginrio()+b.getImaginrio();
-        return  new Complejo(redondearDecimales(x,2),redondearDecimales(y,2));  
-    }
-    /**
-	 * Este metodo permite calcular la resta de dos numeros complejos 
-         * @param a //tipo Complejo
-         * @param b //tipo Complejo
-	 * @return Complejo
-	 */
-    public static Complejo resta(Complejo a,Complejo b){
-        Double x=a.getReal()-b.getReal();
-        Double y=a.getImaginrio()-b.getImaginrio();
-        return new Complejo(x,y);   
-    }
-     /**
-	 * Este metodo permite calcular la multiplicacion  de dos numeros complejos 
-         * @param a //tipo Complejo
-         * @param b //tipo Complejo
-	 * @return Complejo
-	 */
-    public static Complejo multiplicacion(Complejo a,Complejo b){
-        Double x=a.getReal()*b.getReal()-a.getImaginrio()*b.getImaginrio();
-        Double y=a.getReal()*b.getImaginrio()+a.getImaginrio()*b.getReal();
-        return new Complejo(redondearDecimales(x,2),redondearDecimales(y,2)); 
-    }
-     /**
-	 * Este metodo permite calcular la division de dos numeros complejos 
-         * @param a //tipo Complejo
-         * @param b //tipo Complejo
-	 * @return Complejo
-	 */
-    public static Complejo division(Complejo a,Complejo b){
-        Double auxiliar=a.getReal()*a.getReal()+a.getImaginrio()*a.getImaginrio();
-        Double x=(a.getReal()*b.getImaginrio()+a.getImaginrio()*b.getImaginrio())/auxiliar;
-        Double y=(a.getImaginrio()*b.getReal()-a.getReal()*b.getImaginrio())/auxiliar; 
-        return new Complejo(redondearDecimales(x,2),redondearDecimales(y,2));  
-    }
-     /**
-	 * Este metodo permite calcular el conjugado de un numero complejo
-         * @param a //tipo Complejo
-	 * @return Complejo
-	 */
-    public static Complejo Conjugado(Complejo a){
-         return new Complejo(a.getReal(),a.getImaginrio()*-1);
-    }
-     /**
-	 * Este metodo permite calcular el modulo de un numero complejo
-         * @param a //tipo Complejo
-	 * @return Complejo
-	 */
-    public static Double Modulo(Complejo a){
-        return  Math.sqrt(a.getReal()*a.getReal()+a.getImaginrio()*a.getImaginrio());
-    }
-     /**
-	 * Este metodo permite calcular el las cordenadas  polares  de un numero complejo
-         * @param a //tipo Complejo
-	 * @return Complejo
-	 */
-    public static Complejo CartecianasApolares(Complejo a){
-        Double angulo=Math.atan(a.getReal()/a.getImaginrio());
-        Double p=Math.sqrt(a.getReal()*a.getReal()+a.getImaginrio()*a.getImaginrio());
-        return  new Complejo(p, angulo) ;
-    }
-      /**
-	 * Este metodo permite calcular la fase  de un numero complejo
-         * @param a //tipo Complejo
-	 * @return Double
-	 */
-    public static Double fase(Complejo a){
-        Double angulo=Math.atan(a.getReal()/a.getImaginrio());
-        return  angulo;
-    }
-    /**
-	 * Este metodo permite calcular el inverso  de un numero complejo
-         * @param a //tipo Complejo
-	 * @return Complejo
-	 */
-    public static Complejo InversaComplejo(Complejo a ){
-        return new Complejo(a.getReal()*-1, a.getImaginrio()*-1);
-    }
-     /**
-	 * Este metodo permite calcular el suma de vectores
-         * @param a //tipo vector
-         * @param b //tipo vector
-	 * @return Vector
-	 */
-    public static Vector sumaVectores(Vector a, Vector b){
-        int r= a.getVec().size();
-        ArrayList<Complejo> vectorResultado=new ArrayList<Complejo>();
-        for(int i=0;i<r;i++){
-            vectorResultado.add(suma(a.getVec().get(i),b.getVec().get(i)));
+@Test
+    public void canicas_con_coeficiente_booleanos() {
+        System.out.println("---------Canicas_Con_Coeficiente_Booleanos Test---------");
+        System.out.println(" ");
+        System.out.println("-------Libro Ejemplo-----------");
+        int[][] m = {{0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0},
+        {0, 1, 0, 0, 0, 1},
+        {0, 0, 0, 1, 0, 0},
+        {0, 0, 1, 0, 0, 0},
+        {1, 0, 0, 0, 1, 0}};
+        Double[] v = {6.0, 2.0, 1.0, 5.0, 3.0, 10.0};
+        int Clicks = 1;
+        Double[] r = ComplejoLib.CanicasEsperimentoNormal(m, v, Clicks);
+        for (Double e : r) {
+            System.out.println(e);
         }
-        Vector v =new Vector(vectorResultado);
-        return  v;
-    }
-     /**
-	 * Este metodo permite calcular el inverso un de Vector 
-         * @param a //tipo vector
-	 * @return Vector
-         */
-    public static Vector  inversaVector(Vector a){
-        int r= a.getVec().size();
-        ArrayList<Complejo> vectorResultado=new ArrayList<Complejo>();
-        for(int i=0;i<r;i++){
-            vectorResultado.add(InversaComplejo(a.getVec().get(i)));
+        Double[] resp = {0.0, 0.0, 12.0, 5.0, 1.0, 9.0};
+        assertArrayEquals(r, resp);
+        System.out.println(" ");
+        System.out.println("-------Quiz pregunta 2------------");
+        int[][] m2 = {{0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 1, 0, 0},
+        {0, 1, 0, 0, 0, 1},
+        {0, 0, 1, 0, 0, 0},
+        {0, 0, 0, 0, 1, 0},
+        {1, 0, 0, 0, 0, 0}};
+
+        Double[] v2 = {6.0, 0.0, 3.0, 5.0, 3.0, 8.0};
+        Clicks = 5000;
+        r = ComplejoLib.CanicasEsperimentoNormal(m2, v2, Clicks);
+        Double[] resp2 = {0.0, 3.0, 11.0, 8.0, 3.0, 0.0};
+        for (Double e : r) {
+            System.out.println(e);
         }
-        Vector v=new Vector(vectorResultado);
-        return v;
+        assertArrayEquals(r, resp2);
+        System.out.println(" ");
+        ComplejoLib.graficarEstado(r, "canicas_con_coeficiente_booleanos_quiz");
     }
-     /**
-	 * Este metodo permite calcular la multiplicacion entre un vector y un complejo
-         * @param a //tipo vector
-         * @param b //tipo complejo
-	 * @return Vector
-         */
-    public static Vector VectorXComplejo(Vector a, Complejo b){
-        int r= a.getVec().size();
-        ArrayList<Complejo> vectorResultado=new ArrayList<Complejo>();
-        for(int i=0;i<r;i++){
-            vectorResultado.add(multiplicacion(a.getVec().get(i),b));
-        }
-        Vector v =new Vector(vectorResultado);
-        return  v;
-    }
-     
-    public static double redondearDecimales(double valorInicial, int numeroDecimales) {
-        double parteEntera, resultado;
-        resultado = valorInicial;
-        parteEntera = Math.floor(resultado);
-        resultado=(resultado-parteEntera)*Math.pow(10, numeroDecimales);
-        resultado=Math.round(resultado);
-        resultado=(resultado/Math.pow(10, numeroDecimales))+parteEntera;
-        return resultado;
-    }
-   
-    //public static void main(String agr){
-        
-    //}
-}
 ```
-## Pruebas: 
+-resultados: 
+
+#### Experimentos de las múltiples rendijas clásico probabilístico, con dos o más  rendijas: 
+-codigo: 
 ```java 
- public class ComplejoLibTest {
+public static Double[] Experimentosdelasmúltiplesrendijasclásico(Double[][] m1, Double[] v, int clics) {
+        Double[] r = v;
+        for (int i = 0; i < clics; i++) {
+            r = multiplicacionMatrisVectorDouble(m1, r);
+        }
+        return r;
+    }
+public static Double[][] getMatrizXmatriz(int rendijas, int objetivos, HashMap<String, Double> probabilidades) {
+        Double[][] m = new Double[rendijas + objetivos + 1][rendijas + objetivos + 1];
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m[0].length; j++) {
+                if (i == j && j > rendijas) {
+                    m[i][j] = 1.00;
+                } else {
+                    m[i][j] = 0.00;
+                }
 
-    ComplejoLib libreria = new ComplejoLib();
-
-    public ComplejoLibTest() {
+            }
+        }
+        for (String key : probabilidades.keySet()) {
+            String[] p = key.split("-");
+            m[Integer.parseInt(p[1])][Integer.parseInt(p[0])] = probabilidades.get(key);
+        }
+        Double[][] m2 = productoMatricesReales(m, m);
+        for (Double[] e : m2) {
+            System.out.println(Arrays.toString(e));
+        }
+        return m2;
     }
 
-    @Test
-    public void TestSuma() {
-        Complejo a = new Complejo(3.0, -1.0);
-        Complejo b = new Complejo(1.0, 4.0);
-        Complejo resp = ComplejoLib.suma(a, b);
-        System.out.println(resp.getReal());
-        System.out.println(resp.getImaginrio());
-        assertTrue(resp.getReal() == 4.0 && resp.getImaginrio() == 3.0);
-    }
 
-    @Test
-    public void TestResta() {
-        Complejo a = new Complejo(3.0, -1.0);
-        Complejo b = new Complejo(1.0, 4.0);
-        Complejo resp = ComplejoLib.resta(a, b);
-        assertTrue(resp.getReal() == 2.0 && resp.getImaginrio() == -5.0);
-    }
 
-    @Test
-    public void TestMultiplicacion() {
-        Complejo a = new Complejo(3.0, -1.0);
-        Complejo b = new Complejo(1.0, 4.0);
-        Complejo resp = ComplejoLib.multiplicacion(a, b);
-        assertTrue(resp.getReal() == 7.0 && resp.getImaginrio() == 11.0);
+@Test
+    public void MultiplesRendijasExperiemnto() {
+        System.out.println("---------Multiples Rendijas Experiemnto Clasico ---------");
+        System.out.println(" ");
+        HashMap<String, Double> probabilidades = new HashMap<>();
+        probabilidades.put("0-1", 0.50);
+        probabilidades.put("0-2", 0.50);
+        probabilidades.put("1-3", 0.33);
+        probabilidades.put("1-4", 0.33);
+        probabilidades.put("1-5", 0.33);
+        probabilidades.put("2-5", 0.33);
+        probabilidades.put("2-6", 0.33);
+        probabilidades.put("2-7", 0.33);
+        Double[][] m = ComplejoLib.getMatrizXmatriz(2, 5, probabilidades);
+        Double[] v2 = {1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+        Double[] r = ComplejoLib.Experimentosdelasmúltiplesrendijasclásico(m, v2, 1);
+        for (Double e : r) {
+            System.out.println(e);
+        }
+        ComplejoLib.graficarEstado(r, "Multiples_Rendijas_Experiemnto");
     }
+```
+-resultados:  
 
-    @Test
-    public void TestDivicion() {
-        Complejo a = new Complejo(-2.0, 1.0);
-        Complejo b = new Complejo(1.0, 2.0);
-        Complejo resp = ComplejoLib.division(a, b);
+#### Experimentos de las múltiples rendijas clásico probabilístico, con dos o más  rendijas: 
+```java 
+public static Double[][] getMatrizXmatrizCuantico(int rendijas, int objetivos, HashMap<String, Complejo> probabilidades) {
+        Complejo[][] m = new Complejo[rendijas + objetivos + 1][rendijas + objetivos + 1];
 
-        assertTrue(Math.round(resp.getReal()) == 0 && resp.getImaginrio() == 1.0);
-        //assertTrue(true);
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m[0].length; j++) {
+                if (i == j && j > rendijas) {
+                    m[i][j] = new Complejo(1.0, 0.0);
+                } else {
+                    m[i][j] = new Complejo(0.0, 0.0);
+                }
+
+            }
+        }
+
+        for (String key : probabilidades.keySet()) {
+            String[] p = key.split("-");
+            m[Integer.parseInt(p[1])][Integer.parseInt(p[0])] = probabilidades.get(key);
+
+        }
+        Double[][] resp = new Double[m.length][m[0].length];
+        Complejo[][] m2 = productoMatrices(m, m).getMatriz();
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m[0].length; j++) {
+                resp[i][j] = Mod(m2[i][j]);
+            }
+        }
+        return resp;
+    }
+ @Test
+    public void MultiplesRendijasExperiemntoCuantico() {
+        System.out.println("---------Multiples Rendijas Experiemnto Cuantico ---------");
+        System.out.println(" ");
+        DecimalFormat df = new DecimalFormat("#.00");
+        HashMap<String, Complejo> probabilidades = new HashMap<>();
+        probabilidades.put("0-1", new Complejo(1 / Math.sqrt(2), 0.0));
+        probabilidades.put("0-2", new Complejo(1 / Math.sqrt(2), 0.0));
+        probabilidades.put("1-3", new Complejo(-1 / Math.sqrt(6), 1 / Math.sqrt(6)));
+        probabilidades.put("1-4", new Complejo(-1 / Math.sqrt(6), -1 / Math.sqrt(6)));
+        probabilidades.put("1-5", new Complejo(1 / Math.sqrt(6), -1 / Math.sqrt(6)));
+        probabilidades.put("2-5", new Complejo(-1 / Math.sqrt(6), 1 / Math.sqrt(6)));
+        probabilidades.put("2-6", new Complejo(-1 / Math.sqrt(6), -1 / Math.sqrt(6)));
+        probabilidades.put("2-7", new Complejo(1 / Math.sqrt(6), -1 / Math.sqrt(6)));
+        Double[][] m = ComplejoLib.getMatrizXmatrizCuantico(2, 5, probabilidades);
+        Double[] v2 = {1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+        Double[] r = ComplejoLib.Experimentosdelasmúltiplesrendijasclásico(m, v2, 1);
+        for (Double[] e : m) {
+            System.out.println(Arrays.toString(e));
+        }
+        for (Double e : r) {
+            System.out.println(e);
+        }
+        ComplejoLib.graficarEstado(r, "Multiples_Rendijas_Experiemnto_Cuantico");
+    }
+```
+-resultados:  
+
+#### Función para graficar:
+```java 
+public static void graficarEstado(Double[] EstadoVector,String name) {
+        try {
+            DefaultCategoryDataset ds = new DefaultCategoryDataset();
+            for(int i=0;i<EstadoVector.length;i++){
+                ds.addValue(EstadoVector[i],"Vertice"+Integer.toString(i),"");
+            }
+            JFreeChart jf = ChartFactory.createBarChart3D("Estado", "Vertices", "Probabilidad", ds, PlotOrientation.VERTICAL, true, true, true);
+            ChartFrame f = new ChartFrame("Estados", jf);
+            f.setSize(1000, 600);
+            f.setLocationRelativeTo(null);
+            f.setVisible(false);
+            ChartUtilities.saveChartAsPNG(new File(name+".png"),jf, 1000,600,null);
+            
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
 
     }
-
-    @Test
-    public void TestModulo() {
-        Complejo a = new Complejo(1.0, -1.0);
-        Double rta = ComplejoLib.Modulo(a);
-        assertTrue((Objects.equals(rta, (Double) (Math.sqrt(2)))));
-    }
-
-    @Test
-    public void TestConjugado() {
-        Complejo a = new Complejo(1.0, -1.0);
-        Complejo rta = ComplejoLib.Conjugado(a);
-        assertTrue(rta.getReal() == 1.0 && rta.getImaginrio() == 1.0);
-    }
-    @Test
-    public void TestPolar() {
-        Complejo a = new Complejo(1.0, 1.0);
-        Complejo rta = ComplejoLib.CartecianasApolares(a);
-        assertTrue(rta.getImaginrio()==0.7853981633974483 && rta.getReal()==1.4142135623730951 );
-    }
-    @Test
-    public void TestFase() {
-        Complejo a = new Complejo(1.0, 1.0);
-        Double rta = ComplejoLib.fase(a);
-        assertTrue(rta==0.7853981633974483 );
-    }
-}
 ```
 ## Ejecutando Pruebas: 
 ![alt text](https://github.com/luis572/Libreria-Complejos/blob/master/test.JPG " Resultado")
