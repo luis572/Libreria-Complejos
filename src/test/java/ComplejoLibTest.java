@@ -241,7 +241,7 @@ public class ComplejoLibTest {
 
     @Test
     public void Sistema_cuántico_de_partícula_en_una_línea() {
-        System.out.println("-----------------Sistema_cuántico_de_partícula_en_una_línea-----------------------");
+        System.out.println("-----------------Sistema_cuantico_de_particula_en_una_linea-----------------------");
         Complejo[] linea = {
             new Complejo(2.0, 1.0),
             new Complejo(-1.0, 2.0),
@@ -264,7 +264,7 @@ public class ComplejoLibTest {
 
     @Test
     public void probTransitarVectorAtro() {
-        System.out.println("-----------------Sistema_cuántico_de_transicionnnn_en_una_línea-----------------------");
+        System.out.println("-----------------Sistema_cuantico_de_transicion_en_una_línea-----------------------");
         ArrayList<Complejo> linea = new ArrayList<>();
         linea.add(new Complejo(2.0, 1.0));
         linea.add(new Complejo(-1.0, 2.0));

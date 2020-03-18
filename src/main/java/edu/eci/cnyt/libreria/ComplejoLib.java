@@ -519,7 +519,14 @@ public class ComplejoLib {
         }
         return r;
     }
-
+    /**
+     * Crea la matriz correspondiente con las probabilidades dadas entre el punto de partida, las rendijas y objetivos 
+     *
+     * @param rendijas //int 
+     * @param objetivos //int
+     * @param probabilidades //HashMap<String, Complejo>
+     * @return Double[][]
+     */
     public static Double[][] getMatrizXmatrizCuantico(int rendijas, int objetivos, HashMap<String, Complejo> probabilidades) {
         Complejo[][] m = new Complejo[rendijas + objetivos + 1][rendijas + objetivos + 1];
 
@@ -548,7 +555,14 @@ public class ComplejoLib {
         }
         return resp;
     }
-
+    /**
+     * Crea la matriz correspondiente con las probabilidades dadas entre el punto de partida, las rendijas y objetivos 
+     *
+     * @param rendijas //int 
+     * @param objetivos //int
+     * @param probabilidades //HashMap<String, Double>
+     * @return Double[][]
+     */
     public static Double[][] getMatrizXmatriz(int rendijas, int objetivos, HashMap<String, Double> probabilidades) {
         Double[][] m = new Double[rendijas + objetivos + 1][rendijas + objetivos + 1];
         for (int i = 0; i < m.length; i++) {
@@ -612,7 +626,14 @@ public class ComplejoLib {
         }
         return r;
     }
-
+    /**
+     * Calcula la probabilidad de que una particula se encuentr en un objetivo despuesde ciertos click en el tiempo. 
+     *
+     * @param m1 //Double[][]
+     * @param v //Double[] 
+     * @param clics //HashMap<String, Double>
+     * @return int
+     */
     public static Double[] Experimentosdelasmúltiplesrendijasclásico(Double[][] m1, Double[] v, int clics) {
         Double[] r = v;
         for (int i = 0; i < clics; i++) {
@@ -662,7 +683,11 @@ public class ComplejoLib {
         resultado = (resultado / Math.pow(10, numeroDecimales)) + parteEntera;
         return resultado;
     }
-
+    /**
+     * Crea una imagen mediante un vector de estado  y la guarda en el directorio raiz de nuestro proyecto.
+     * @param EstadoVector //Double[]
+     * @param name //String
+     */
     public static void graficarEstado(Double[] EstadoVector,String name) {
         try {
             DefaultCategoryDataset ds = new DefaultCategoryDataset();
