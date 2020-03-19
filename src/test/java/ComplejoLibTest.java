@@ -290,7 +290,23 @@ public class ComplejoLibTest {
         linea2.add(new Complejo(2.0, -7.0));
         System.out.println(ComplejoLib.AmpliTransitarVectorAtro(new Vector(linea),new Vector(linea2)));
     }
-    
+    @Test
+    public void varianza() {
+        
+        System.out.println("-------Varianza QUIZ-----------");
+        /**Complejo [][] m = {{new Complejo(2.0,0.0),new Complejo(1.0,1.0)},
+        {new Complejo(1.0,-1.0), new Complejo(3.0,0.0)}};
+        
+        Complejo[] v = {new Complejo(1/Math.sqrt(2),0.0),new Complejo(0.0,1/Math.sqrt(2))};*/
+        Complejo [][] m = {{new Complejo(1.0,0.0),new Complejo(0.0,-1.0)},
+        {new Complejo(0.0,1.0), new Complejo(2.0,0.0)}};
+        
+        Complejo[] v = {new Complejo(Math.sqrt(2)/2,0.0),new Complejo(0.0,Math.sqrt(2)/2)};
+        System.out.println(ComplejoLib.varianza(m, v));
+        System.out.println(ComplejoLib.mean(m, v));
+         System.out.println("-------Varianza QUIZ-----------");
+    }
+
 
        
        

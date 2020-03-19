@@ -519,10 +519,12 @@ public class ComplejoLib {
         }
         return r;
     }
+
     /**
-     * Crea la matriz correspondiente con las probabilidades dadas entre el punto de partida, las rendijas y objetivos 
+     * Crea la matriz correspondiente con las probabilidades dadas entre el
+     * punto de partida, las rendijas y objetivos
      *
-     * @param rendijas //int 
+     * @param rendijas //int
      * @param objetivos //int
      * @param probabilidades //HashMap<String, Complejo>
      * @return Double[][]
@@ -555,10 +557,12 @@ public class ComplejoLib {
         }
         return resp;
     }
+
     /**
-     * Crea la matriz correspondiente con las probabilidades dadas entre el punto de partida, las rendijas y objetivos 
+     * Crea la matriz correspondiente con las probabilidades dadas entre el
+     * punto de partida, las rendijas y objetivos
      *
-     * @param rendijas //int 
+     * @param rendijas //int
      * @param objetivos //int
      * @param probabilidades //HashMap<String, Double>
      * @return Double[][]
@@ -626,11 +630,13 @@ public class ComplejoLib {
         }
         return r;
     }
+
     /**
-     * Calcula la probabilidad de que una particula se encuentr en un objetivo despuesde ciertos click en el tiempo. 
+     * Calcula la probabilidad de que una particula se encuentr en un objetivo
+     * despuesde ciertos click en el tiempo.
      *
      * @param m1 //Double[][]
-     * @param v //Double[] 
+     * @param v //Double[]
      * @param clics //HashMap<String, Double>
      * @return int
      */
@@ -641,39 +647,42 @@ public class ComplejoLib {
         }
         return r;
     }
-	public static Double SistemaCuanticoPartUnalínea(Complejo[] linea,int posicion) {
-            Double suma=0.0;
-            for(Complejo e: linea){
-                suma=suma+Mod(e);
-            }
-            Double estand=Math.sqrt(suma);
-            Double prob=Mod(linea[posicion])/(estand*estand);
-            return prob;
+
+    public static Double SistemaCuanticoPartUnalínea(Complejo[] linea, int posicion) {
+        Double suma = 0.0;
+        for (Complejo e : linea) {
+            suma = suma + Mod(e);
         }
-    public static Vector normalizar(Vector a){
-        
-        ArrayList<Complejo>b=a.getVec();    
-        Double magnitud=0.0;
-        for(int i=0;i<b.size();i++){
-            magnitud+=Math.pow(Modulo(b.get(i)),2);
+        Double estand = Math.sqrt(suma);
+        Double prob = Mod(linea[posicion]) / (estand * estand);
+        return prob;
+    }
+
+    public static Vector normalizar(Vector a) {
+
+        ArrayList<Complejo> b = a.getVec();
+        Double magnitud = 0.0;
+        for (int i = 0; i < b.size(); i++) {
+            magnitud += Math.pow(Modulo(b.get(i)), 2);
         }
-        magnitud=Math.sqrt(magnitud);
-        
-        for(int i=0;i<b.size();i++){
-            Complejo d=new Complejo(b.get(i).getReal()/magnitud,b.get(i).getImaginrio()/magnitud); 
+        magnitud = Math.sqrt(magnitud);
+
+        for (int i = 0; i < b.size(); i++) {
+            Complejo d = new Complejo(b.get(i).getReal() / magnitud, b.get(i).getImaginrio() / magnitud);
             b.set(i, d);
         }
-        return new Vector(b);   
+        return new Vector(b);
     }
-    public static Complejo AmpliTransitarVectorAtro(Vector a,Vector b){
-        Vector vn2=normalizar(adjuntaVector(a));
-        Vector vn1=normalizar(b);
-        ArrayList<Complejo>v1=vn1.getVec();
-        ArrayList<Complejo>v2=vn2.getVec();
-        
-        return productoInternoVectores(new Vector(v1),new Vector(v2));
+
+    public static Complejo AmpliTransitarVectorAtro(Vector a, Vector b) {
+        Vector vn2 = normalizar(adjuntaVector(a));
+        Vector vn1 = normalizar(b);
+        ArrayList<Complejo> v1 = vn1.getVec();
+        ArrayList<Complejo> v2 = vn2.getVec();
+
+        return productoInternoVectores(new Vector(v1), new Vector(v2));
     }
-    
+
     public static double redondearDecimales(double valorInicial, int numeroDecimales) {
         double parteEntera, resultado;
         resultado = valorInicial;
@@ -683,29 +692,84 @@ public class ComplejoLib {
         resultado = (resultado / Math.pow(10, numeroDecimales)) + parteEntera;
         return resultado;
     }
+
     /**
-     * Crea una imagen mediante un vector de estado  y la guarda en el directorio raiz de nuestro proyecto.
+     * Crea una imagen mediante un vector de estado y la guarda en el directorio
+     * raiz de nuestro proyecto.
+     *
      * @param EstadoVector //Double[]
      * @param name //String
      */
-    public static void graficarEstado(Double[] EstadoVector,String name) {
+    public static void graficarEstado(Double[] EstadoVector, String name) {
         try {
             DefaultCategoryDataset ds = new DefaultCategoryDataset();
-            for(int i=0;i<EstadoVector.length;i++){
-                ds.addValue(EstadoVector[i],"Vertice"+Integer.toString(i),"");
+            for (int i = 0; i < EstadoVector.length; i++) {
+                ds.addValue(EstadoVector[i], "Vertice" + Integer.toString(i), "");
             }
             JFreeChart jf = ChartFactory.createBarChart3D("Estado", "Vertices", "Probabilidad", ds, PlotOrientation.VERTICAL, true, true, true);
             ChartFrame f = new ChartFrame("Estados", jf);
             f.setSize(1000, 600);
             f.setLocationRelativeTo(null);
             f.setVisible(false);
-            ChartUtilities.saveChartAsPNG(new File(name+".png"),jf, 1000,600,null);
-            
+            ChartUtilities.saveChartAsPNG(new File(name + ".png"), jf, 1000, 600, null);
+
         } catch (Exception e) {
             System.out.println("error" + e);
         }
 
     }
-    //public static void main(String agr){
-    //}
+
+    public static Double productoEscalar(Vector a, Vector b) {
+        Double sum = 0.0;
+        for (int i = 0; i < a.getVec().size(); i++) {
+            sum += Math.abs(a.getVec().get(i).getReal() * b.getVec().get(i).getReal()) + Math.abs(b.getVec().get(i).getImaginrio() * a.getVec().get(i).getImaginrio());
+        }
+        return sum;
+
+    }
+
+    public static Double mean(Complejo[][] observable, Complejo[] ket) {
+        ArrayList<Complejo> a = new ArrayList<>();
+        a.addAll(Arrays.asList(ket));
+        return productoEscalar(accionMatrisVector(observable, ket), new Vector(a));
+    }
+
+   
+
+    public static Double varianza(Complejo[][] observable, Complejo[] ket) {
+        if (hermitiana(observable)) {
+            System.out.println("El observable no es hermitiano");
+            //retorna en 0 si no es hermitiano
+            return 0.0;
+        } else {
+            Double valorM = mean(observable, ket);
+            Complejo[][] identidad = new Complejo[observable.length][observable[0].length];
+            for (int i = 0; i < observable.length; i++) {
+                for (int j = 0; j < observable[0].length; j++) {
+                    if (i == j) {
+                        identidad[i][j] = new Complejo(valorM, 0.0);
+                    } else {
+                        identidad[i][j] = new Complejo(0.0, 0.0);
+                    }
+                }
+            }
+            Matriz resta = restaDeMatrizes(observable, identidad);
+            Double resp=0.0;
+            Matriz producto = productoMatrices(resta.getMatriz(), resta.getMatriz());
+            for(int i=0;i<producto.getMatriz().length;i++){
+                for(int j=0;j<producto.getMatriz()[0].length;j++){
+                    //resp+=Mod(producto.getMatriz()[i][j])*ket[i];
+                }
+            }
+            for(Complejo[]e :producto.getMatriz()){
+                System.out.println(Arrays.toString(e));
+            }
+            ArrayList<Complejo> a = new ArrayList<>();
+            a.addAll(Arrays.asList(ket));
+            System.out.println(accionMatrisVector(producto.getMatriz(), ket).toString());
+            //Double  r2 = productoEscalar(r1, new Vector(a));
+            //Double rep=productoEscalar(r2,ket);
+            return mean(producto.getMatriz(),ket);
+        }
+    }
 }
